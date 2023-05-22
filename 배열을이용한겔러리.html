@@ -36,7 +36,52 @@
         }
     </style>
     <script>
-        
+        /*
+        프로그램 가동과 동시에 해야할 작업 
+        1) 이름에 규칙이 없는 사진을, 메모리에 올리면서 규칙있게 만들기
+            즉 사진명을 배열화 시키자!
+        2) 배열화 시킨 사진 중, 첫번째 (0번째 index) 사진을 content 영역에 출력
+        3) 해당 사진의 이름을 header영역에 출력
+        */
+        let photo=new Array(10);//길이가 10인 배열을 선언
+        //현재 시점에서는 10개의 비어있는 메모리 공간 확보됨
+
+        //사진의 제목 보여주기 
+        function showTitle(){
+            let header = document.getElementById("header");
+            header.innerText=photo[0];
+        }
+
+        //큰 사진 보여주기 함수
+        function showDetail(){
+            let img=document.createElement("img");
+            img.src="../images/album/"+photo[0];
+            img.style.width=600+"px";
+            img.style.height=400+"px";
+
+            //content에 부착 
+            let content=document.getElementById("content");
+            content.appendChild(img);
+        }
+
+        function init(){
+            photo[0]="a.jpg";
+            photo[1]="b.jpg";
+            photo[2]="c.jpg";
+            photo[3]="d.jpg";
+            photo[4]="e.jpg";
+            photo[5]="f.jpg";
+            photo[6]="g.jpg";
+            photo[7]="h.jpg";
+            photo[8]="i.jpg";
+            photo[9]="j.jpg";
+        }
+
+        addEventListener("load", function(){
+            init();
+            showDetail(); //사진보여주기
+            showTitle();//제목보여주기
+        });
     </script>
 </head>
 <body>
